@@ -1,0 +1,14 @@
+// Copyright 2025 The NoPeek Authors. All rights reserved.
+// Licensed under the Apache License, Version 2.0 that can be found in the
+// LICENSE file in the root directory of this source tree.
+
+fastapi==0.110.0
+uvicorn==0.29.0
+sqlalchemy==2.0.28
+python-dotenv==1.0.1
+pillow==11.0.0
+opencv-python-headless==4.9.0.80
+numpy==1.26.4
+pymysql==1.1.0
+python-multipart==0.0.9
+starlette==0.36.3

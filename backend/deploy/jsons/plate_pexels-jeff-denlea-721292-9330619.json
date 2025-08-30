@@ -1,0 +1,16 @@
+// Copyright 2025 The NoPeek Authors. All rights reserved.
+// Licensed under the Apache License, Version 2.0 that can be found in the
+// LICENSE file in the root directory of this source tree.
+
+[
+  {
+    "bbox_xyxy": [
+      0.0,
+      0.7581181208292643,
+      0.14120558102925618,
+      0.8740387598673502
+    ],
+    "confidence": 0.7435641288757324,
+    "attributes": {}
+  }
+]
