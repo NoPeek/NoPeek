@@ -147,8 +147,8 @@ def run_document_detection(image_path: str) -> list:
             return []
 
         # 构建命令
-        json_path = os.path.splitext(image_path)[0] + ".json"
-        cmd = ["python", "blur.py", "-i", image_path, "-j", json_path]
+        json_path = os.path.splitext(image_path)[0] + "_doc.json"
+        cmd = ["python", "blur_doc.py", "-i", image_path, "-j", json_path]
 
         # 执行命令
         result = subprocess.run(cmd, capture_output=True, text=True, cwd=os.path.dirname(os.path.abspath(__file__)))
