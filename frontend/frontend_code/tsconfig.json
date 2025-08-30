@@ -1,0 +1,30 @@
+// Copyright 2025 The NoPeek Authors. All rights reserved.
+// Licensed under the Apache License, Version 2.0 that can be found in the
+// LICENSE file in the root directory of this source tree.
+
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "@lynx-js/react",
+
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "target": "es2017",
+    "lib": ["ES2017", "DOM", "DOM.Iterable"],
+
+    "strict": true,
+    "isolatedModules": true,
+
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+
+    "baseUrl": ".",
+    "paths": {
+        "@/*": ["src/*"],
+        "@components/*": ["src/components/*"],
+        "@utils/*": ["src/utils/*"]
+    }
+  },
+  "exclude": ["dist/", "lynx/"],
+  "include": ["src/**/*","src/*"]
+}
