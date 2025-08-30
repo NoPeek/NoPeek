@@ -24,12 +24,12 @@ We carefully designed and selected tools that balance robust AI capabilities wit
 - **Frontend Development – Lynx**: Used to rapidly prototype and integrate AI-powered privacy features into a smooth, user-friendly interface.
 - **Metadata Stripping – piexifjs**: Removes EXIF metadata (location, device, timestamps) before upload.
 - **Object Detection – YOLO + InsightFace + Custom CV Pipelines**
-  - [YOLOv8 License Plate Recognition]('https://github.com/Muhammad-Zeerak-Khan/Automatic-License-Plate-Recognition-using-YOLOv8')
-  - [InsightFace]('https://github.com/deepinsight/insightface') for facial recognition
+  - [YOLOv8 License Plate Recognition](https://github.com/Muhammad-Zeerak-Khan/Automatic-License-Plate-Recognition-using-YOLOv8)
+  - [InsightFace](https://github.com/deepinsight/insightface) for facial recognition
   - Custom CV pipelines for detecting sensitive visuals like documents and passports
 - **AI Art Transformation – FLUX Diffusion Models + LoRA**
-  - [FLUX Diffusion Model]('https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev') for stylized avatars
-  - [LoRA Collection]('https://huggingface.co/XLabs-AI/flux-lora-collection?utm_source=chatgpt.com') for personalization
+  - [FLUX Diffusion Model](https://huggingface.co/black-forest-labs/FLUX.1-Depth-dev) for stylized avatars
+  - [LoRA Collection](https://huggingface.co/XLabs-AI/flux-lora-collection?utm_source=chatgpt.com) for personalization
 - **Backend Infrastructure – FastAPI + MySQL**: Fast, lightweight APIs with secure, scalable database management.
 
 # How to Use NoPeek
@@ -94,6 +94,10 @@ Follow these steps to set up and run NoPeek locally:
 
 # Demo Video & Documentation
 
-Our demo video is available on YouTube 👉 [Watch Here]('https://youtube.com').
+Our demo video is available on YouTube 👉 [Watch Here](https://youtube.com).
 
 For a deeper dive into NoPeek, check out the full 📄 [Project Documentation](Your-Docs-Link).
+
+# License
+
+This project is licensed under the Apache License Version 2.0 License - see the [LICENSE](LICENSE) file for details.
