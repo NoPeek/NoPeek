@@ -6,8 +6,8 @@
 <h1 align="center">NoPeek: AI-Powered Photo Privacy Protection</h1>
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=ID">
-    <img src="https://img.youtube.com/vi/ID/maxresdefault.jpg" alt="NoPeek youtube video" width="600">
+  <a href="https://youtu.be/meq0yFQ_fOY">
+    <img src="./documents/img/entry.jpg" alt="NoPeek youtube video" width="600">
   </a>
   <br>
   <em>Click to Watch Youtube Demo Video</em>
@@ -111,10 +111,14 @@ Follow these steps to set up and run NoPeek locally:
 
 - Frontend (Lynx + Node.js)
 
-    ```bash
-    cd frontend
-    pnpm install
-    ```
+    - Refer to the official [Lynx documentation](https://lynxjs.org/guide/start/quick-start.html#ios-simulator-platform=macos-arm64,explorer-platform=ios-simulator) to configure the environment.
+
+    - Then install the project dependencies:
+
+        ```bash
+        cd frontend/frontemd_code
+        pnpm install
+        ```
 
 3. Run the Project
 
@@ -138,7 +142,7 @@ Follow these steps to set up and run NoPeek locally:
 
 # Documentation
 
-For a deeper dive into NoPeek, check out the full 📄 [Project Documentation](Your-Docs-Link).
+For a deeper dive into NoPeek, check out the full 📄 [Project Documentation](./documents/Documentation.pdf).
 
 # License
 
