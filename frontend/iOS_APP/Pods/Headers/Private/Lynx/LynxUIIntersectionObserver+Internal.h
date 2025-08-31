@@ -1,0 +1,1 @@
+../../../Lynx/platform/darwin/ios/lynx/ui/LynxUIIntersectionObserver+Internal.h

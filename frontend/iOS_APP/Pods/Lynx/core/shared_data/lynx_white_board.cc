@@ -1,0 +1,125 @@
+// Copyright 2022 The Lynx Authors. All rights reserved.
+// Licensed under the Apache License Version 2.0 that can be found in the
+// LICENSE file in the root directory of this source tree.
+
+#include "core/shared_data/lynx_white_board.h"
+
+#include <algorithm>
+#include <string>
+#include <utility>
+
+#include "base/include/value/base_value.h"
+
+namespace lynx {
+namespace tasm {
+
+WhiteBoard::WhiteBoard()
+    : listeners_{static_cast<uint8_t>(WhiteBoardStorageType::COUNT)} {
+  data_center_lock_ =
+      std::unique_ptr<fml::SharedMutex>(fml::SharedMutex::Create());
+  listener_lock_.emplace(
+      WhiteBoardStorageType::TYPE_CLIENT,
+      std::unique_ptr<fml::SharedMutex>(fml::SharedMutex::Create()));
+  listener_lock_.emplace(
+      WhiteBoardStorageType::TYPE_JS,
+      std::unique_ptr<fml::SharedMutex>(fml::SharedMutex::Create()));
+  listener_lock_.emplace(
+      WhiteBoardStorageType::TYPE_LEPUS,
+      std::unique_ptr<fml::SharedMutex>(fml::SharedMutex::Create()));
+}
+
+void WhiteBoard::SetGlobalSharedData(const std::string& key,
+                                     const std::shared_ptr<pub::Value>& value) {
+  {
+    fml::UniqueLock lock(*data_center_lock_);
+    if (inspector_ != nullptr) {
+      if (data_center_.find(key) != data_center_.end()) {
+        inspector_->OnSharedDataUpdated(key, *value);
+      } else {
+        inspector_->OnSharedDataAdded(key, *value);
+      }
+    }
+    data_center_[key] = value;
+  }
+
+  TriggerListener(WhiteBoardStorageType::TYPE_LEPUS, key, *value);
+  TriggerListener(WhiteBoardStorageType::TYPE_CLIENT, key, *value);
+  TriggerListener(WhiteBoardStorageType::TYPE_JS, key, *value);
+}
+
+std::shared_ptr<pub::Value> WhiteBoard::GetGlobalSharedData(
+    const std::string& key) {
+  fml::SharedLock lock(*data_center_lock_);
+  auto iter = data_center_.find(key);
+  if (iter != data_center_.end()) {
+    return iter->second;
+  }
+  return nullptr;
+}
+
+void WhiteBoard::RemoveGlobalSharedData(const std::string& key) {
+  {
+    fml::UniqueLock lock(*data_center_lock_);
+    data_center_.erase(key);
+  }
+  if (inspector_ != nullptr) {
+    inspector_->OnSharedDataRemoved(key);
+  }
+}
+
+void WhiteBoard::ClearGlobalSharedData() {
+  {
+    fml::UniqueLock lock(*data_center_lock_);
+    data_center_.clear();
+  }
+  if (inspector_ != nullptr) {
+    inspector_->OnSharedDataCleared();
+  }
+}
+
+void WhiteBoard::TriggerListener(const WhiteBoardStorageType& type,
+                                 const std::string& key,
+                                 const pub::Value& value) {
+  fml::SharedLock lock(*listener_lock_[type]);
+  auto& listener_map = listeners_.at(static_cast<uint8_t>(type));
+  auto listener_iter = listener_map.find(key);
+  if (listener_iter != listener_map.end()) {
+    // iterator over listeners and trigger callbacks;
+    auto& listener = listener_iter->second;
+    for (auto& listener : listener) {
+      listener.trigger_callback(value);
+    }
+  }
+}
+
+// subscribe operation.
+void WhiteBoard::RegisterSharedDataListener(const WhiteBoardStorageType& type,
+                                            const std::string& key,
+                                            WhiteBoardListener listener) {
+  fml::UniqueLock lock(*listener_lock_[type]);
+  auto& listener_map = listeners_.at(static_cast<uint8_t>(type));
+  auto pair = listener_map.emplace(key, std::vector<WhiteBoardListener>());
+  pair.first->second.emplace_back(std::move(listener));
+}
+
+void WhiteBoard::RemoveSharedDataListener(const WhiteBoardStorageType& type,
+                                          const std::string& key,
+                                          int32_t listener_id) {
+  fml::UniqueLock lock(*listener_lock_[type]);
+  auto& listener_map = listeners_.at(static_cast<uint8_t>(type));
+  auto listener_iter = listener_map.find(key);
+  if (listener_iter != listener_map.end()) {
+    auto& listeners = listener_iter->second;
+    for (auto iter = listeners.begin(); iter != listeners.end(); iter++) {
+      if (iter->callback_id == listener_id) {
+        iter->remove_callback();
+        listeners.erase(iter);
+        break;
+      }
+    }
+  }
+}
+
+// Unsubscribe Operation End
+}  // namespace tasm
+}  // namespace lynx

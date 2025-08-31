@@ -1,0 +1,1 @@
+../../../Lynx/platform/darwin/common/lynx/performance/LynxPerformanceController.h

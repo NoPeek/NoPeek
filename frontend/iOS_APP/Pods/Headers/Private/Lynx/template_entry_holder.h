@@ -1,0 +1,1 @@
+../../../Lynx/core/renderer/template_entry_holder.h

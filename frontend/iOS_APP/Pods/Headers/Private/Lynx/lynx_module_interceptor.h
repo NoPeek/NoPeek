@@ -1,0 +1,1 @@
+../../../Lynx/core/runtime/bindings/jsi/modules/ios/lynx_module_interceptor.h

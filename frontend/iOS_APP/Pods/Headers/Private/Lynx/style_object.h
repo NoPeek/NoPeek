@@ -1,0 +1,1 @@
+../../../Lynx/core/renderer/simple_styling/style_object.h

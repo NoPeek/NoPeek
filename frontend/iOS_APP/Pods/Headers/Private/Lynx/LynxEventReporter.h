@@ -1,0 +1,1 @@
+../../../Lynx/platform/darwin/common/lynx/public/event_report/LynxEventReporter.h

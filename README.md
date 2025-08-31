@@ -13,6 +13,7 @@
   <em>Click to Watch Youtube Demo Video</em>
 </p>
 
+
 # Content
 
 - [About NoPeek](#about-nopeek)
@@ -119,6 +120,13 @@ Follow these steps to set up and run NoPeek locally:
         cd frontend/frontemd_code
         pnpm install
         ```
+- Development 
+
+    To use iOS App:
+    1. Download the project
+    2. Run pod install
+    3. Connect your phone to Xcode (either with a cable or via hotspot), and set the target to your own device
+    4. Click Run to launch it on your phone
 
 3. Run the Project
 

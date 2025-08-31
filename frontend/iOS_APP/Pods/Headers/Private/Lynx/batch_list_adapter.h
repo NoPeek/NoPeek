@@ -1,0 +1,1 @@
+../../../Lynx/core/renderer/ui_component/list/batch_list_adapter.h

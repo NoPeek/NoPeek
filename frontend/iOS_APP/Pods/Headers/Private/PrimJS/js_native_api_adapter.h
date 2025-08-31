@@ -1,0 +1,1 @@
+../../../PrimJS/src/napi/adapter/js_native_api_adapter.h

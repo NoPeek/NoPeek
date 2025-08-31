@@ -1,0 +1,1 @@
+../../../Lynx/core/public/performance_controller_platform_impl.h

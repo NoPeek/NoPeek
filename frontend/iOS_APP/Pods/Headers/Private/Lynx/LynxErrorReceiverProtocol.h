@@ -1,0 +1,1 @@
+../../../Lynx/platform/darwin/common/lynx/LynxErrorReceiverProtocol.h

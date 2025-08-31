@@ -1,0 +1,1 @@
+../../../Lynx/core/renderer/simple_styling/simple_style_node.h

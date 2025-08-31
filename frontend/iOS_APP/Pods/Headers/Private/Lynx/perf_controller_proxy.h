@@ -1,0 +1,1 @@
+../../../Lynx/core/public/perf_controller_proxy.h

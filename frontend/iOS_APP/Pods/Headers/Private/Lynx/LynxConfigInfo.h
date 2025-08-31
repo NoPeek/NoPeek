@@ -1,0 +1,1 @@
+../../../Lynx/platform/darwin/common/lynx/public/LynxConfigInfo.h

@@ -1,0 +1,1 @@
+../../../Lynx/core/renderer/pipeline/pipeline_scope.h

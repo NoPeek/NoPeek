@@ -1,0 +1,1 @@
+../../../Lynx/core/template_bundle/template_codec/binary_decoder/page_config.h
